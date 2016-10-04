@@ -86,5 +86,72 @@ namespace ProjEulerInCSharp
             Console.WriteLine("Problem 4: " + largestPalindrome);
             Console.ReadLine();
         }
+
+        public void Problem5() // Smallest multiple
+        {
+            Int64 smallestNumber = 30;
+            bool smallestNumberFound = false;
+            while (!smallestNumberFound)
+            {
+                smallestNumber++;
+
+                for (int i = 2; i <= 20; i++)
+                {
+                    if (smallestNumber % i != 0)
+                        break;
+
+                    if (i == 20)
+                        smallestNumberFound = true;
+                }
+            }
+
+            Console.WriteLine("Problem 5: " + smallestNumber);
+            Console.ReadLine();
+        }
+
+        public void Problem6() // Sum square difference
+        {
+            Int64 sumOfSquares = 0, squareOfSums = 0, result = 0;
+
+            for (int i = 1; i <= 100; i++ )
+            {
+                sumOfSquares += i * i;
+                squareOfSums += i;
+            }
+
+            result = (squareOfSums * squareOfSums) - sumOfSquares;
+
+            Console.WriteLine("Problem 6: " + result);
+            Console.ReadLine();
+        }
+
+        public void Problem7()
+        {
+            int primeNumber = 4, tempNumber = 4;
+            bool isPrime = false;
+
+            for (int i = 3; i <= 10001; i++)
+            {
+                tempNumber++;
+
+                for (int a = 2; a < tempNumber; a++)
+                {
+                    if (tempNumber % a == 0)
+                        break;
+
+                    if (a == tempNumber - 1)
+                        isPrime = true;
+                }
+
+                if (isPrime)
+                    primeNumber = tempNumber;
+
+                isPrime = false;
+            }
+
+            //Console.WriteLine("Problem 7: " + primeNumber);
+            Console.WriteLine("Problem 7: In progress!");
+            Console.ReadLine();
+        }
     }
 }

@@ -11,10 +11,13 @@ namespace ProjEulerInCSharp
         static void Main(string[] args)
         {
             Problems1To10 results1to10 = new Problems1To10();
-            //results1to10.Problem1();
-            //results1to10.Problem2();
-            //results1to10.Problem3();
+            results1to10.Problem1();
+            results1to10.Problem2();
+            results1to10.Problem3();
             results1to10.Problem4();
+            results1to10.Problem5();
+            results1to10.Problem6();
+            results1to10.Problem7();
         }
     }
 }
