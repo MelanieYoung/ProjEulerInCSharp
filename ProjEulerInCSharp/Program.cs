@@ -18,6 +18,9 @@ namespace ProjEulerInCSharp
             results1to10.Problem5();
             results1to10.Problem6();
             results1to10.Problem7();
+            results1to10.Problem8();
+            results1to10.Problem9();
+            Console.ReadKey();
         }
     }
 }

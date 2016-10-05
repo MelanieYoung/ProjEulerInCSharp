@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,6 @@ namespace ProjEulerInCSharp
                     sumResult += i;
             }
             Console.WriteLine("Problem 1: " + sumResult);
-            Console.ReadLine();
         }
 
         public void Problem2() // Even Fibonacci numbers
@@ -35,7 +35,6 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 2: " + sumOfEven);
-            Console.ReadLine();
         }
 
         public void Problem3() // Largest prime factor
@@ -48,7 +47,6 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 3: " + largestPrime);
-            Console.ReadLine();
         }
 
         public void Problem4() // Largest palindrome product
@@ -84,7 +82,6 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 4: " + largestPalindrome);
-            Console.ReadLine();
         }
 
         public void Problem5() // Smallest multiple
@@ -106,7 +103,6 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 5: " + smallestNumber);
-            Console.ReadLine();
         }
 
         public void Problem6() // Sum square difference
@@ -122,36 +118,91 @@ namespace ProjEulerInCSharp
             result = (squareOfSums * squareOfSums) - sumOfSquares;
 
             Console.WriteLine("Problem 6: " + result);
-            Console.ReadLine();
         }
 
-        public void Problem7()
+        public void Problem7() // 10001st prime
         {
             int primeNumber = 4, tempNumber = 4;
             bool isPrime = false;
 
             for (int i = 3; i <= 10001; i++)
             {
-                tempNumber++;
-
-                for (int a = 2; a < tempNumber; a++)
+                while (!isPrime)
                 {
-                    if (tempNumber % a == 0)
-                        break;
+                    tempNumber++;
 
-                    if (a == tempNumber - 1)
-                        isPrime = true;
+                    for (int a = 2; a < tempNumber; a++)
+                    {
+                        if (tempNumber % a == 0)
+                            break;
+
+                        if (a == tempNumber - 1)
+                            isPrime = true;
+                    }
                 }
-
-                if (isPrime)
-                    primeNumber = tempNumber;
+                
+                primeNumber = tempNumber;
 
                 isPrime = false;
             }
 
-            //Console.WriteLine("Problem 7: " + primeNumber);
-            Console.WriteLine("Problem 7: In progress!");
-            Console.ReadLine();
+            Console.WriteLine("Problem 7: " + primeNumber);
+        }
+
+        public void Problem8() // Largest product in a series
+        {
+            StreamReader reader = new StreamReader("D:\\GitHub\\ProjEulerInCSharp\\Problem8.txt");
+            string fileContent = reader.ReadToEnd().Replace("\r\n", "");
+            reader.Close();
+
+            Int64 currentProduct = 1, largestProduct = 0;
+
+            for(int i = 0; i < fileContent.Length-13; i++)
+            {
+                for (int index = i; index < i + 13; index++)
+                {
+                    currentProduct *= Convert.ToInt32(fileContent[index].ToString());
+                }
+
+                if (largestProduct < currentProduct)
+                    largestProduct = currentProduct;
+
+                currentProduct = 1;
+            }
+
+            Console.WriteLine("Problem 8: " + largestProduct);
+        }
+
+        public void Problem9() // Special Pythagorean triplet
+        {
+            //int a = 1, b = 1, c = 1;
+            //Int64 pythagoreanProduct = 0;
+            //bool pythagoreanFound = false;
+
+            //while (a + b + c <= 1000)
+            //{
+            //    a++;
+            //    if ((c*c) == (a*a) + (b*b))
+            //    {
+            //        if (a + b + c == 1000)
+            //        {
+            //            pythagoreanFound = true;
+            //            pythagoreanProduct = a * b * c;
+            //        }
+            //    }
+
+            //    if (a + b + c >= 1000)
+            //    {
+            //        a = 1;
+            //        b++;
+            //    }
+
+            //    if (pythagoreanFound)
+            //        break;
+            //}
+            
+            //Console.WriteLine("Problem 9: " + pythagoreanProduct);
+            Console.WriteLine("Problem 9: In Progress!");
         }
     }
 }
