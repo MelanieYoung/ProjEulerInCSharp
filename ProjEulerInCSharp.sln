@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjEulerInCSharp", "ProjEu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{706303BF-B3AF-441F-8746-0F98E3C71090}"
 	ProjectSection(SolutionItems) = preProject
+		Problem11.txt = Problem11.txt
 		Problem8.txt = Problem8.txt
 	EndProjectSection
 EndProject

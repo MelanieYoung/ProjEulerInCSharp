@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProjEulerInCSharp
@@ -175,34 +176,68 @@ namespace ProjEulerInCSharp
 
         public void Problem9() // Special Pythagorean triplet
         {
-            //int a = 1, b = 1, c = 1;
-            //Int64 pythagoreanProduct = 0;
-            //bool pythagoreanFound = false;
+            int a = 1, b = 1, c = 1;
+            double result = 0;
+            Int64 pythagoreanProduct = 0;
+            bool pythagoreanFound = false;
 
-            //while (a + b + c <= 1000)
-            //{
-            //    a++;
-            //    if ((c*c) == (a*a) + (b*b))
-            //    {
-            //        if (a + b + c == 1000)
-            //        {
-            //            pythagoreanFound = true;
-            //            pythagoreanProduct = a * b * c;
-            //        }
-            //    }
+            for (a = 2;  (a + b + c <= 1000) && !pythagoreanFound; a++)
+            {
+                for (b = a + 1; a + b + c <= 1000; b++)
+                {
+                    result = (a * a) + (b * b);
+                    c = Convert.ToInt32(Math.Sqrt(result));
 
-            //    if (a + b + c >= 1000)
-            //    {
-            //        a = 1;
-            //        b++;
-            //    }
+                    if (c > b)
+                    {
+                        if ((c * c) == (a * a) + (b * b))
+                        {
+                            if (a + b + c == 1000)
+                            {
+                                pythagoreanProduct = Convert.ToInt64(a * b * c);
+                                pythagoreanFound = true;
+                            }
+                        }
+                    }
+                }
 
-            //    if (pythagoreanFound)
-            //        break;
-            //}
-            
-            //Console.WriteLine("Problem 9: " + pythagoreanProduct);
-            Console.WriteLine("Problem 9: In Progress!");
+                b = a + 1;
+
+                if (pythagoreanFound)
+                    break;
+            }
+
+            Console.WriteLine("Problem 9: " + pythagoreanProduct);
+        }
+
+        public void Problem10() // Summation of primes
+        {
+            object sumOfPrimes = 0;
+            //Thread t1 = new Thread( sumOfPrimes => PrimeCalc(2000000, 1000000));
+            Thread t1 = new Thread(() => { sumOfPrimes = PrimeCalc(10, 2); });
+            t1.Start();
+            //Console.WriteLine("Problem 10: " + sumOfPrimes);
+            Console.WriteLine("Problem 10: In progress!");
+        }
+
+        private Int64 PrimeCalc(int maxVal, int minVal)
+        {
+            Int64 sum = 0;
+
+            for (int i = maxVal - 1; i >= minVal; i--)
+            {
+                for (int j = i - 1; j >= 2; j--)
+                {
+                    if (i % j == 0)
+                        break;
+
+                    if (j == 2 && (i % j != 0))
+                        sum += i;
+                }
+                Console.WriteLine(sum);
+            }
+
+            return sum;
         }
     }
 }
