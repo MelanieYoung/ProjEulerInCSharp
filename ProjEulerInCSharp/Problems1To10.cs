@@ -212,29 +212,42 @@ namespace ProjEulerInCSharp
 
         public void Problem10() // Summation of primes
         {
-            object sumOfPrimes = 0;
-            //Thread t1 = new Thread( sumOfPrimes => PrimeCalc(2000000, 1000000));
-            Thread t1 = new Thread(() => { sumOfPrimes = PrimeCalc(10, 2); });
+            // TODO: Improve processing time. Currently it takes ~64 minutes to obtain the result
+            object result1 = 0, result2 = 0, result3 = 0, result4 = 0;
+            Thread t1 = new Thread(() => { result1 = PrimeCalc(2000000, 1500000); });
+            Thread t2 = new Thread(() => { result2 = PrimeCalc(1499999, 1000000); });
+            Thread t3 = new Thread(() => { result3 = PrimeCalc(999999, 500000); });
+            Thread t4 = new Thread(() => { result4 = PrimeCalc(499999, 2); });
             t1.Start();
-            //Console.WriteLine("Problem 10: " + sumOfPrimes);
-            Console.WriteLine("Problem 10: In progress!");
+            t2.Start();
+            t3.Start();
+            t4.Start();
+
+            Console.WriteLine("Processing...");
+
+            t1.Join();
+            t2.Join();
+            t3.Join();
+            t4.Join();
+
+            Int64 sumOfPrimes = Convert.ToInt64(result1) + Convert.ToInt64(result2) + Convert.ToInt64(result3) + Convert.ToInt64(result4);
+            Console.WriteLine("Problem 10: " + (sumOfPrimes + 2));
         }
 
         private Int64 PrimeCalc(int maxVal, int minVal)
         {
             Int64 sum = 0;
 
-            for (int i = maxVal - 1; i >= minVal; i--)
+            for (int i = maxVal; i >= minVal; i--)
             {
                 for (int j = i - 1; j >= 2; j--)
                 {
-                    if (i % j == 0)
+                    if (i % j == 0 && i != minVal)
                         break;
 
                     if (j == 2 && (i % j != 0))
                         sum += i;
                 }
-                Console.WriteLine(sum);
             }
 
             return sum;
