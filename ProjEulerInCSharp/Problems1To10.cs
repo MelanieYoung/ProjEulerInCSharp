@@ -1,15 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ProjEulerInCSharp
 {
     public class Problems1To10
     {
+        public static void PrintAllProblemsResults()
+        {
+            Problems1To10 results1to10 = new Problems1To10();
+            results1to10.Problem1();
+            results1to10.Problem2();
+            results1to10.Problem3();
+            results1to10.Problem4();
+            results1to10.Problem5();
+            results1to10.Problem6();
+            results1to10.Problem7();
+            results1to10.Problem8();
+            results1to10.Problem9();
+            results1to10.Problem10();
+        }
+
         public void Problem1() // Multiples of 3 and 5
         {
             int sumResult = 0;
@@ -234,6 +245,7 @@ namespace ProjEulerInCSharp
             Console.WriteLine("Problem 10: " + (sumOfPrimes + 2));
         }
 
+        #region [-- Auxiliary Functions --]
         private Int64 PrimeCalc(int maxVal, int minVal)
         {
             Int64 sum = 0;
@@ -252,5 +264,6 @@ namespace ProjEulerInCSharp
 
             return sum;
         }
+        #endregion
     }
 }
