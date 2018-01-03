@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
 
 namespace ProjEulerInCSharp
 {
@@ -12,19 +10,18 @@ namespace ProjEulerInCSharp
         public static void PrintAllProblemsResults()
         {
             Problems11To20 results11to20 = new Problems11To20();
-            results11to20.Problem11();
-            //results11to20.test();
+            //results11to20.Problem11();
+            results11to20.Problem16();
         }
 
         public void Problem11() // Largest product in a grid
         {
-            StreamReader reader = new StreamReader("D:\\GitHub\\ProjEulerInCSharp\\Problem11.txt");
+            string path = ConfigurationManager.AppSettings["PathToProblem11"];
+            StreamReader reader = new StreamReader(path);
             string fileContent = reader.ReadToEnd().Replace("\r\n", " # ");
             reader.Close();
 
             int largestProduct = 0, currentProduct = 1, currentNumber = 0;
-            var a = fileContent.Split('#');
-            int[,] matrix = new int[20,20];
             int i = 0, j = 0;
 
             //for (int index = 0; index < fileContent.Length; index += 62)
@@ -64,57 +61,24 @@ namespace ProjEulerInCSharp
             Console.WriteLine("Problem 11: " + largestProduct);
         }
 
-        private bool test()
+        public void Problem16() // Power digit sum
         {
-            int[] sequence = { 1, 2, 1, 2 };
+            BigInteger ultraPower = 2;
+            int sumOfChars = 0;
 
-            bool repeatedFound = false, isAlmostIncreasing = true;
-            int position = -1, j = 0;
-
-            for (int i = 0; i <= sequence.Length - 2; i++)
+            for (int i = 1; i < 1000; i++)
             {
-                if (i == position)
-                    i++;
-
-                j = i + 1;
-
-                if (sequence[i] > sequence[j])
-                {
-                    
-                    if (repeatedFound)
-                    {
-                        isAlmostIncreasing = false;
-                        break;
-                    }
-
-                    repeatedFound = true;
-                    position = j;
-                }
-                else
-                {
-                    if (sequence[i] != sequence[j] - 1)
-                    {
-                        if (j < sequence.Length - 2)
-                        {
-                            if (sequence[i] != sequence[j + 1] - 1)
-                            {
-                                isAlmostIncreasing = false;
-                                break;
-                            }
-
-                            repeatedFound = true;
-                            position = j;
-                        }
-                        else
-                        {
-                            isAlmostIncreasing = false;
-                            break;
-                        }
-                    }
-                }
+                ultraPower *= 2;
             }
 
-            return isAlmostIncreasing;
+            string powerResult = ultraPower.ToString();
+
+            foreach (char eachChar in powerResult)
+            {
+                sumOfChars += int.Parse(eachChar.ToString());
+            }
+
+            Console.WriteLine("Problem 16:" + sumOfChars);
 
         }
     }

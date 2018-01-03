@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using System.Configuration;
 
 namespace ProjEulerInCSharp
 {
@@ -163,7 +164,8 @@ namespace ProjEulerInCSharp
 
         public void Problem8() // Largest product in a series
         {
-            StreamReader reader = new StreamReader("D:\\GitHub\\ProjEulerInCSharp\\Problem8.txt");
+            string path = ConfigurationManager.AppSettings["PathToProblem8"];
+            StreamReader reader = new StreamReader(path);
             string fileContent = reader.ReadToEnd().Replace("\r\n", "");
             reader.Close();
 
