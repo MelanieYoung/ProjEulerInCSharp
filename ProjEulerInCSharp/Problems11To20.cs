@@ -11,7 +11,7 @@ namespace ProjEulerInCSharp
         {
             Problems11To20 results11to20 = new Problems11To20();
             //results11to20.Problem11();
-            results11to20.Problem16();
+            //results11to20.Problem16();
         }
 
         public void Problem11() // Largest product in a grid
