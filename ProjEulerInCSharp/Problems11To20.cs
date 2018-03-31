@@ -12,6 +12,7 @@ namespace ProjEulerInCSharp
             Problems11To20 results11to20 = new Problems11To20();
             //results11to20.Problem11();
             //results11to20.Problem16();
+            results11to20.Problem17();
         }
 
         public void Problem11() // Largest product in a grid
@@ -79,7 +80,27 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 16:" + sumOfChars);
+        }
 
+        public void Problem17()
+        {
+            int totalLetters = 0;
+            string numberName = string.Empty;
+
+            Console.WriteLine(HelperFunctions.GetNumberName(666));
+            Console.WriteLine(HelperFunctions.GetNumberName(1000));
+            Console.WriteLine(HelperFunctions.GetNumberName(10));
+            Console.WriteLine(HelperFunctions.GetNumberName(100));
+            Console.WriteLine(HelperFunctions.GetNumberName(2));
+
+
+            //for (int i = 1; i <= 1000; i++)
+            //{
+            //    numberName = HelperFunctions.GetNumberName(i);
+            //    totalLetters += numberName.Length;
+            //}
+
+            Console.WriteLine("Problem 17: " + totalLetters);
         }
     }
 }

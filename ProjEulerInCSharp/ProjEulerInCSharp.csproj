@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelperFunctions.cs" />
     <Compile Include="Problems11To20.cs" />
     <Compile Include="Problems1To10.cs" />
     <Compile Include="Problems21To30.cs" />
