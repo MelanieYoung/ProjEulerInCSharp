@@ -28,7 +28,15 @@ namespace ProjEulerInCSharp
                     dividedNumbers.Add(Int32.Parse(multiplier.ToString()));
                 }
                 else
-                    dividedNumbers.Add(Int32.Parse(partitionedNumber[i].ToString()) * (Int32.Parse(multiplier.ToString())));
+                {
+                    if (current == 1 && multiplier == 10)
+                    {
+                        dividedNumbers.Add(Int32.Parse(partitionedNumber[i].ToString() + partitionedNumber[i + 1]));
+                        break;
+                    }
+                    else
+                        dividedNumbers.Add(Int32.Parse(partitionedNumber[i].ToString()) * (Int32.Parse(multiplier.ToString())));
+                }
 
                 multiplier = 10;
                 powerValue--;
@@ -102,7 +110,7 @@ namespace ProjEulerInCSharp
                         numberName += " thirty";
                         break;
                     case 40:
-                        numberName += " fourty";
+                        numberName += " forty";
                         break;
                     case 50:
                         numberName += " fifty";
@@ -130,7 +138,10 @@ namespace ProjEulerInCSharp
                 }
             }
 
-            return numberName;
+            if (proposedNumber % 100 == 0 && proposedNumber != 1000)
+                numberName = numberName.Replace("and", "");
+
+            return numberName.Trim();
         }
     }
 }

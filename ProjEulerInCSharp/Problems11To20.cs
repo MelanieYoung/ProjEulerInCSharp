@@ -87,18 +87,11 @@ namespace ProjEulerInCSharp
             int totalLetters = 0;
             string numberName = string.Empty;
 
-            Console.WriteLine(HelperFunctions.GetNumberName(666));
-            Console.WriteLine(HelperFunctions.GetNumberName(1000));
-            Console.WriteLine(HelperFunctions.GetNumberName(10));
-            Console.WriteLine(HelperFunctions.GetNumberName(100));
-            Console.WriteLine(HelperFunctions.GetNumberName(2));
-
-
-            //for (int i = 1; i <= 1000; i++)
-            //{
-            //    numberName = HelperFunctions.GetNumberName(i);
-            //    totalLetters += numberName.Length;
-            //}
+            for (int i = 1; i <= 1000; i++)
+            {
+                numberName = HelperFunctions.GetNumberName(i);
+                totalLetters += numberName.Trim().Replace(" ", "").Length;
+            }
 
             Console.WriteLine("Problem 17: " + totalLetters);
         }

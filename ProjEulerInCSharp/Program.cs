@@ -11,7 +11,7 @@ namespace ProjEulerInCSharp
         static void Main(string[] args)
         {
             Problems1To10.PrintAllProblemsResults();
-            //Problems11To20.PrintAllProblemsResults();
+            Problems11To20.PrintAllProblemsResults();
             //Problems21To30.PrintAllProblemsResults();
 
 
