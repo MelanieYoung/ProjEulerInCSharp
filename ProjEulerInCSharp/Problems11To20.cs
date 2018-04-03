@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using System.Numerics;
+using System.Linq;
 
 namespace ProjEulerInCSharp
 {
@@ -11,8 +12,10 @@ namespace ProjEulerInCSharp
         {
             Problems11To20 results11to20 = new Problems11To20();
             //results11to20.Problem11();
+            //results11to20.Problem12();
             //results11to20.Problem16();
-            results11to20.Problem17();
+            //results11to20.Problem17();
+            results11to20.Problem20();
         }
 
         public void Problem11() // Largest product in a grid
@@ -33,7 +36,7 @@ namespace ProjEulerInCSharp
             //    {
             //        j++;
             //        matrix[i] = new int[20];
-                    
+
             //        if (!fileContent[v].ToString().Contains("#"))
             //        {
             //            matrix[i][j] = Convert.ToInt32(fileContent[v].ToString() + fileContent[v + 1].ToString());
@@ -62,6 +65,31 @@ namespace ProjEulerInCSharp
             Console.WriteLine("Problem 11: " + largestProduct);
         }
 
+        public void Problem12() // Highly divisible triangular number
+        {
+            BigInteger currentTriangularNumber = 0, previousNumber = 1;
+            int amountOfDivisors = 0;
+
+            while (amountOfDivisors < 500)
+            {
+                currentTriangularNumber += previousNumber;
+                previousNumber++;
+
+                for (BigInteger i = currentTriangularNumber; i > 0; i--)
+                {
+                    if (currentTriangularNumber % i == 0)
+                        amountOfDivisors++;
+                }
+
+                if (amountOfDivisors > 500)
+                    break;
+                else
+                    amountOfDivisors = 0;
+            }
+
+            Console.WriteLine("Problem 12: " + currentTriangularNumber);
+        }
+
         public void Problem16() // Power digit sum
         {
             BigInteger ultraPower = 2;
@@ -82,7 +110,7 @@ namespace ProjEulerInCSharp
             Console.WriteLine("Problem 16:" + sumOfChars);
         }
 
-        public void Problem17()
+        public void Problem17() // Number letter counts
         {
             int totalLetters = 0;
             string numberName = string.Empty;
@@ -94,6 +122,25 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 17: " + totalLetters);
+        }
+
+        public void Problem20() // Factorial digital sum
+        {
+            BigInteger factorial = 1;
+            for (int i = 100; i > 0; i--)
+            {
+                factorial *= i;
+            }
+
+            var totalFactorial = factorial.ToString().ToArray();
+            int sumOfCharacters = 0;
+
+            for (int i = 0; i < totalFactorial.Length; i++)
+            {
+                sumOfCharacters += Int32.Parse(totalFactorial[i].ToString());
+            }
+
+            Console.WriteLine("Problem 20: " + sumOfCharacters);
         }
     }
 }
