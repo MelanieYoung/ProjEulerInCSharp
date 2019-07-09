@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.IO;
 using System.Numerics;
 
 namespace ProjEulerInCSharp
@@ -8,7 +10,36 @@ namespace ProjEulerInCSharp
         public static void PrintAllProblemsResults()
         {
             Problems21To30 results21To30 = new Problems21To30();
+            results21To30.Problem22();
             results21To30.Problem25();
+        }
+
+        public void Problem22() // Names scores
+        {
+            string path = ConfigurationManager.AppSettings["PathToProblem22"];
+            StreamReader reader = new StreamReader(path);
+            string fileContent = reader.ReadToEnd().Replace("\"", "");
+            reader.Close();
+
+            var listOfNames = fileContent.Split(',');
+            Array.Sort(listOfNames);
+            int namePosition = 1, totalCurrentName = 0;
+            double totalNameScores = 0;
+
+            foreach(string name in listOfNames)
+            {
+                var nameArray = name.ToCharArray();
+                for (int i = 0; i < name.Length; i++)
+                {
+                    totalCurrentName += HelperFunctions.GetLetterValue(nameArray[i]);
+                }
+
+                totalNameScores += namePosition * totalCurrentName;
+                totalCurrentName = 0;
+                namePosition++;
+            }
+
+            Console.WriteLine("Problem 22: " + totalNameScores.ToString());
         }
 
         public void Problem25() // 1000-digit Fibonacci number

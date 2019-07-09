@@ -12,8 +12,7 @@ namespace ProjEulerInCSharp
         {
             Problems1To10.PrintAllProblemsResults();
             Problems11To20.PrintAllProblemsResults();
-            //Problems21To30.PrintAllProblemsResults();
-
+            Problems21To30.PrintAllProblemsResults();
 
             Console.ReadKey();
         }

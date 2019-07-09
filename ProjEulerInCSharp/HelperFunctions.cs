@@ -141,5 +141,95 @@ namespace ProjEulerInCSharp
 
             return numberName.Trim();
         }
+
+        public static int GetLetterValue(char letter)
+        {
+            int letterValue = 0;
+            switch(letter)
+            {
+                case 'A':
+                    letterValue = 1;
+                    break;
+                case 'B':
+                    letterValue = 2;
+                    break;
+                case 'C':
+                    letterValue = 3;
+                    break;
+                case 'D':
+                    letterValue = 4;
+                    break;
+                case 'E':
+                    letterValue = 5;
+                    break;
+                case 'F':
+                    letterValue = 6;
+                    break;
+                case 'G':
+                    letterValue = 7;
+                    break;
+                case 'H':
+                    letterValue = 8;
+                    break;
+                case 'I':
+                    letterValue = 9;
+                    break;
+                case 'J':
+                    letterValue = 10;
+                    break;
+                case 'K':
+                    letterValue = 11;
+                    break;
+                case 'L':
+                    letterValue = 12;
+                    break;
+                case 'M':
+                    letterValue = 13;
+                    break;
+                case 'N':
+                    letterValue = 14;
+                    break;
+                case 'O':
+                    letterValue = 15;
+                    break;
+                case 'P':
+                    letterValue = 16;
+                    break;
+                case 'Q':
+                    letterValue = 17;
+                    break;
+                case 'R':
+                    letterValue = 18;
+                    break;
+                case 'S':
+                    letterValue = 19;
+                    break;
+                case 'T':
+                    letterValue = 20;
+                    break;
+                case 'U':
+                    letterValue = 21;
+                    break;
+                case 'V':
+                    letterValue = 22;
+                    break;
+                case 'W':
+                    letterValue = 23;
+                    break;
+                case 'X':
+                    letterValue = 24;
+                    break;
+                case 'Y':
+                    letterValue = 25;
+                    break;
+                case 'Z':
+                    letterValue = 26;
+                    break;
+                default:
+                    break;
+            }
+
+            return letterValue;
+        }
     }
 }
