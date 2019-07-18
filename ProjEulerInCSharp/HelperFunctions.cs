@@ -234,33 +234,26 @@ namespace ProjEulerInCSharp
 
         public static bool IsNonAbundantNumber(int numberToCheck)
         {
-            int sumOfDivisors = 0;
-            double divisor = 0;
+            int sumOfDivisors = 0, divisor = 0;
             List<int> divisors = new List<int>();
 
-            if (numberToCheck % 2 != 0)
-                return true;
-            else
+            divisor = (int)Math.Sqrt(divisor);
+            for (int i = 1; i <= divisor; ++i)
             {
-                while (divisor >= 1)
+                if (numberToCheck % i == 0)
                 {
-                    if (numberToCheck != divisor && numberToCheck % divisor == 0)
-                        divisors.Add(divisor);
+                    divisors.Add(i);
 
-                    if (divisor % 2 != 0)
-                        divisor--;
-                    else
-                        divisor /= 2;
+                    if (i != numberToCheck/i)
+                        divisors.Add(numberToCheck/i);
                 }
             }
 
             foreach (int number in divisors)
             {
-                Console.WriteLine(number);
                 sumOfDivisors += number;
             }
 
-            Console.WriteLine( numberToCheck + " IsNonAbundantNumber: " + !(sumOfDivisors == numberToCheck));
             return !(sumOfDivisors == numberToCheck);
         }
     }
