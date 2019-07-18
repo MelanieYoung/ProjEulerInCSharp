@@ -232,19 +232,19 @@ namespace ProjEulerInCSharp
             return letterValue;
         }
 
-        public static bool IsNonAbundantNumber(int numberToCheck)
+        public static bool IsAbundantNumber(int numberToCheck)
         {
             int sumOfDivisors = 0, divisor = 0;
             List<int> divisors = new List<int>();
 
-            divisor = (int)Math.Sqrt(divisor);
+            divisor = (int)Math.Sqrt(numberToCheck);
             for (int i = 1; i <= divisor; ++i)
             {
-                if (numberToCheck % i == 0)
+                if (numberToCheck % i == 0 && i != numberToCheck)
                 {
                     divisors.Add(i);
 
-                    if (i != numberToCheck/i)
+                    if (i != numberToCheck/i && i != 1 )
                         divisors.Add(numberToCheck/i);
                 }
             }
@@ -254,7 +254,8 @@ namespace ProjEulerInCSharp
                 sumOfDivisors += number;
             }
 
-            return !(sumOfDivisors == numberToCheck);
+            Console.WriteLine("Is Abundant: " +  (sumOfDivisors > numberToCheck) + " sum is " + sumOfDivisors);
+            return sumOfDivisors > numberToCheck;
         }
     }
 }
