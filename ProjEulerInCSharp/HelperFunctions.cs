@@ -257,5 +257,27 @@ namespace ProjEulerInCSharp
             Console.WriteLine("Is Abundant: " +  (sumOfDivisors > numberToCheck) + " sum is " + sumOfDivisors);
             return sumOfDivisors > numberToCheck;
         }
+
+        public static bool IsPrime(Int64 numberToCheck)
+        {
+            Int64 tempNumber = Convert.ToInt64(Math.Sqrt(numberToCheck));
+
+            if (numberToCheck == 2 || numberToCheck == 3)
+                return true;
+
+            if (numberToCheck % 2 == 0 || numberToCheck % 3 == 0)
+                return false;
+
+            if (numberToCheck % Math.Sqrt(numberToCheck) == 0)
+                return false;
+
+            for (int j = 3; j < Math.Sqrt(numberToCheck); j += 2)
+            {
+                if (numberToCheck % j == 0)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
