@@ -10,9 +10,14 @@ namespace ProjEulerInCSharp
         public static void PrintAllProblemsResults()
         {
             Problems21To30 results21To30 = new Problems21To30();
-            results21To30.Problem22();
-            results21To30.Problem25();
+            results21To30.Problem21();
+            //results21To30.Problem22();
+            //results21To30.Problem23();
+            //results21To30.Problem25();
         }
+
+        public void Problem21()
+        { }
 
         public void Problem22() // Names scores
         {
@@ -40,6 +45,18 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 22: " + totalNameScores.ToString());
+        }
+
+        public void Problem23() // Non-abundant sums
+        {
+            int result = 0;
+
+            for (int i = 28123; i > 0; i--)
+            {
+                result += (HelperFunctions.IsAbundantNumber(i) ? i : 0);
+            }
+
+            Console.WriteLine("Problem 23: " + result);
         }
 
         public void Problem25() // 1000-digit Fibonacci number

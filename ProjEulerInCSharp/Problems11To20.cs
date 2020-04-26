@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
-using System.Numerics;
 using System.Linq;
+using System.Numerics;
 
 namespace ProjEulerInCSharp
 {

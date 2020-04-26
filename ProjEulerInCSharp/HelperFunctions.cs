@@ -279,5 +279,19 @@ namespace ProjEulerInCSharp
 
             return true;
         }
+
+        public static bool IsPalindrome(string stringToCheck)
+        {
+            int indexEnd = stringToCheck.Length - 1;
+            for (int i = 0; i < stringToCheck.Length / 2; i++)
+            {
+                if (stringToCheck[i] != stringToCheck[indexEnd])
+                    return false;
+
+                indexEnd--;
+            }
+
+            return true;
+        }
     }
 }

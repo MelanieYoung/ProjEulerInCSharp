@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjEulerInCSharp
 {
@@ -13,6 +9,7 @@ namespace ProjEulerInCSharp
             Problems1To10.PrintAllProblemsResults();
             Problems11To20.PrintAllProblemsResults();
             Problems21To30.PrintAllProblemsResults();
+            Problems31To40.PrintAllProblemsResults();
 
             Console.ReadKey();
         }
