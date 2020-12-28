@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Numerics;
@@ -11,9 +12,11 @@ namespace ProjEulerInCSharp
         {
             Problems21To30 results21To30 = new Problems21To30();
             results21To30.Problem21();
-            //results21To30.Problem22();
-            //results21To30.Problem23();
-            //results21To30.Problem25();
+            results21To30.Problem22();
+            results21To30.Problem23();
+            results21To30.Problem25();
+            results21To30.Problem29();
+            results21To30.Problem30();
         }
 
         public void Problem21()
@@ -78,7 +81,52 @@ namespace ProjEulerInCSharp
             }
 
             Console.WriteLine("Problem 25: " + index);
+        }
 
+        public void Problem29() //Distinct powers
+        {
+            int a = 100, b = 100;
+            double currentPower = 0;
+            List<double> allPowers = new List<double>();
+
+            for (int j = 2; j <= b; j++)
+            {
+                for (int i = 2; i <= a; i++)
+                {
+                    currentPower = Math.Pow(i, j) ;
+                    if (!allPowers.Contains(currentPower))
+                        allPowers.Add(currentPower);
+                }
+            }
+
+            Console.WriteLine("Problem 29: " + allPowers.Count);
+        }
+
+        public void Problem30() //Digit fifth powers
+        {
+            double powerNumber = 5, sumOfDigits = 0, sumOfFifths = 0;
+
+            // Note: I still haven't found a criterium to define the maximum number as the ceiling for this problem
+            for (int i = 2; i < 1000000; i++)
+            {
+                for (int j = 0; j < i.ToString().Length; j++)
+                {
+                    sumOfDigits += Math.Pow(double.Parse(i.ToString().Substring(j, 1)), powerNumber);
+                    if (sumOfDigits > i)
+                        break;
+                }
+
+                if (sumOfDigits == i)
+                {
+                    sumOfFifths += i;
+                    Console.WriteLine(i);
+                }
+                    
+
+                sumOfDigits = 0;
+            }
+
+            Console.WriteLine("Problem 30: " + sumOfFifths.ToString());
         }
     }
 }
